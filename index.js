@@ -42,6 +42,17 @@ async function run() {
       res.send(food);
     })
 
+    app.patch('/foods/:id',async(req,res)=>{
+       const id=req.params.id
+       const updatedData=req.body;
+       const result= await foodCollection.updateOne({
+        _id: new ObjectId(id)},
+        {
+          $set:updatedData}
+       )
+       res.send(result)
+    })
+
     console.log("MongoDB Connected!!");
   } finally {
     

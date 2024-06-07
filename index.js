@@ -30,12 +30,9 @@ async function run() {
     })
 
     app.post('/foods',async(req,res)=>{
-      const foods={
-        name:'Noodles',
-        price:400,
-      }
+      const foods=req.body
       const result= await foodCollection.insertOne(foods);
-      res.send()
+      res.send(result)
     })
 
     app.get('/foods/:id',async(req,res)=>{
